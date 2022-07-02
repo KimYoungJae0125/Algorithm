@@ -3,7 +3,7 @@ package BaekJoon.step2;
 import java.util.Scanner;
 
 //주사위 세개
-public class Step3_7_2480 {
+public class Step2_7_2480 {
     /*
      * 문제
      * - 1에서부터 6까지의 눈을 가진 3개의 주사위를 던져서 다음과 같은 규칙에 따라 상금을 받는 게임이 있다.
