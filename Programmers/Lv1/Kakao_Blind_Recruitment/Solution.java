@@ -1,6 +1,10 @@
 package Programmers.Lv1.Kakao_Blind_Recruitment;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Solution {
     public int[] solution(String[] id_list, String[] report, int k) {
@@ -31,23 +35,26 @@ public class Solution {
 
         return answer;
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         Solution solution = new Solution();
         String[] id_list = {"muzi", "frodo", "apeach", "neo"};
         String[] report = {"muzi frodo", "apeach frodo", "frodo neo", "muzi neo", "apeach muzi"};
         int k = 2;
         int[] answer = solution.solution(id_list, report, k);
-        for(int i : answer) {
-            System.out.println(i);
-        }
+        bw.write("[");
+        bw.write(Arrays.stream(answer).mapToObj(String::valueOf).collect(Collectors.joining(", ")));
+        bw.write("]");
+        bw.newLine();
 
         String[] id_list2 = {"con", "ryan"};
         String[] report2 = {"ryan con", "ryan con", "ryan con", "ryan con"};
         int k2 = 3;
         int[] answer2 = solution.solution(id_list2, report2, k2);
-        for(int i : answer2) {
-            System.out.println(i);
-        }
+        bw.write("[");
+        bw.write(Arrays.stream(answer2).mapToObj(String::valueOf).collect(Collectors.joining(", ")));
+        bw.write("]");
 
+        bw.close();
     }
 }
