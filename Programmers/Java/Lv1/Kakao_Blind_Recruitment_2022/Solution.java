@@ -1,4 +1,4 @@
-package Programmers.Lv1.Kakao_Blind_Recruitment;
+package Programmers.Java.Lv1.Kakao_Blind_Recruitment_2022;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
