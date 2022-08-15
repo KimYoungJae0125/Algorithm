@@ -1,4 +1,4 @@
-package BaekJoon.step1;
+package BaekJoon.step1.S_15_25083;
 
 //새싹
 public class Step1_14_25083 {
