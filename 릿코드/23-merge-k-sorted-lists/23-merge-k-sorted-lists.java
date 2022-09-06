@@ -10,22 +10,23 @@
  */
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
-          ListNode node = new ListNode();
-          ListNode cur = node;
-          while(true) {
-              int max = 999999999, breakInt = -1;
-              for(int i=0, len= lists.length; i<len; i++) {
-                  if(lists[i] == null) continue;
-                  if(lists[i].val < max) {
-                      max = lists[i].val;
-                      breakInt = i;
-                  }
-              }
-              if(breakInt == -1) break;
-              cur.next = lists[breakInt];
-              cur = cur.next;
-              lists[breakInt] = lists[breakInt].next;
+        List<Integer> list = new ArrayList<>();
+        for(ListNode n : lists) {
+          while(n != null) {
+              list.add(n.val);
+              n = n.next;
           }
-          return node.next;
+        }
+        Integer[] a = list.stream().sorted(Comparator.reverseOrder()).toArray(Integer[]::new);
+        ListNode node = null;
+        for(int i : a) {
+            if(node == null) {
+                node = new ListNode(i);
+            } else {
+                node = new ListNode(i, node);
+            }
+        }
+
+        return node;
     }
 }
