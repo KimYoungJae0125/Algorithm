@@ -1,7 +1,7 @@
 class Solution {
     public int romanToInt(String s) {
-       char[] c = s.toCharArray();
-        List<Integer> list = new ArrayList<>();
+        char[] c = s.toCharArray();
+        int sum = 0;
         for(int i=0; i<c.length; i++) {
             int result = charToInt(c[i]);
             if (i < c.length - 1) {
@@ -13,9 +13,9 @@ class Solution {
                     i++;
                 }
             }
-            list.add(result);
+            sum += result;
         }
-        return IntStream.range(0, list.size()).map(list::get).sum();
+        return sum;
     }
     int charToInt(char c) {
         int result = 0;
