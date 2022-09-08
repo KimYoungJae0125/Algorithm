@@ -40,6 +40,6 @@ class Solution {
             }
             if(count != -1) list.add(i);
         }
-        return list.stream().distinct().map(i -> words[i]).toArray(String[]::new);
+        return list.stream().map(i -> words[i]).toArray(String[]::new);
     }
 }
