@@ -5,7 +5,6 @@ class Solution {
             if(i%2 ==0)  map.put(i, map.get(i) == null ? 0 : map.get(i) + 1);
         }
         if(map.size() == 0) return -1;
-        List<Integer> list = new ArrayList<>();
         int max = -1;
         for(Integer key : map.keySet()) {
             if(map.get(key) > max) {
