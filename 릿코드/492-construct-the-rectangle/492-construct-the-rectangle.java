@@ -4,7 +4,7 @@ class Solution {
         int[] result = new int[2];
         for(int i = (int) Math.sqrt(area); i<=area; i++) {
             if(i > min) break;
-            for(int j=1; j<=area/i; j++) {
+            for(int j=1, len=area/i; j<=len; j++) {
                 if(i < j) break;
                 if(i * j == area) {
                         min = i - j;
