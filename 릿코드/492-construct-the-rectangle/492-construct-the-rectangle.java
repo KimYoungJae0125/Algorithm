@@ -2,7 +2,7 @@ class Solution {
     public int[] constructRectangle(int area) {
         int min = 999_999_999;
         int[] result = new int[2];
-        for(int i=1; i<=area; i++) {
+        for(int i = (int) Math.sqrt(area); i<=area; i++) {
             if(i > min) break;
             for(int j=1; j<=area/i; j++) {
                 if(i < j) break;
