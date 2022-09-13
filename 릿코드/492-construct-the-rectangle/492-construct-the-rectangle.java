@@ -1,14 +1,14 @@
 class Solution {
     public int[] constructRectangle(int area) {
-        int min = 999_999_999;
         int[] result = new int[2];
-        for(int i = (int) Math.sqrt(area); i<=min; i++) {
-            for(int j=1, len = area/i; j<=len && i>=j; j++) {
-                if(i * j == area) {
-                        min = i - j;
-                        result[0] = i;
-                        result[1] = j;
+        for(double i = Math.ceil(Math.sqrt(area)); i>0; i--) {
+            if((area/i) % 1 == 0) {
+                if(i > (area/i)) {
+                    result =  new int[]{(int) i, (int) (area/i)};
+                    break;
                 }
+                result = new int[]{(int) (area/i), (int) i};
+                break;
             }
         }
         return result;
