@@ -4,13 +4,13 @@ class Solution {
         for(double i = Math.ceil(Math.sqrt(area)); i>0; i--) {
             if((area/i) % 1 == 0) {
                 if(i > (area/i)) {
-                    result =  new int[]{(int) i, (int) (area/i)};
-                    break;
+                    return  new int[]{(int) i, (int) (area/i)};
+                    
                 }
-                result = new int[]{(int) (area/i), (int) i};
-                break;
+                return new int[]{(int) (area/i), (int) i};
+                
             }
         }
-        return result;
+        return new int[]{0, 0};
     }
 }
