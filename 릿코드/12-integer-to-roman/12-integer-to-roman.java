@@ -32,9 +32,7 @@ class Solution {
                 sb.append("D");
                 num-=5;
             }
-            for(int i=0; i<num; i++) {
-                sb.append("C");
-            }
+            for(int i=0; i<num; i++) sb.append("C");
             return sb.toString();
 
         }else if(num/10 > 0) {
@@ -48,9 +46,7 @@ class Solution {
                 sb.append("L");
                 num-=5;
             }
-            for(int i=0; i<num; i++) {
-                sb.append("X");
-            }
+            for(int i=0; i<num; i++) sb.append("X");
             return sb.toString();
         }else if(num > 0) {
             switch (num) {
@@ -62,9 +58,7 @@ class Solution {
                 sb.append("V");
                 num-=5;
             }
-            for(int i=0; i<num; i++) {
-                sb.append("I");
-            }
+            for(int i=0; i<num; i++) sb.append("I");
             return sb.toString();
         }
         return "";
