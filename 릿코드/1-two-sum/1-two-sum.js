@@ -4,10 +4,12 @@
  * @return {number[]}
  */
 const twoSum = (nums, target) => {
+    const map = {};
     for(let i=0, len=nums.length; i<len; i++) {
-        for(let j=0; j<len; j++) {
-            if(i === j) continue;
-            if(nums[i] + nums[j] === target) return [i, j];
+        const another = target - nums[i];
+        if(another in map) {
+            return [map[another], i];
         }
+        map[nums[i]] = i;
     }
 };
