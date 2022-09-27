@@ -3,7 +3,8 @@
  * @return {boolean}
  */
 const checkPerfectNumber = (num) => {
-    const factorMath = [0];
+    if(num === 1) return false;
+    const factorMath = [];
     for(let i=1, len=num/2; i<=len; i++) {
         if(num%i === 0) 
         factorMath.push(i);
