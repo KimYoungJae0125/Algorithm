@@ -4,7 +4,7 @@
  */
 const checkPerfectNumber = (num) => {
     const factorMath = [0];
-    for(let i=1; i<=num/2; i++) {
+    for(let i=1, len=num/2; i<=len; i++) {
         if(num%i === 0) 
         factorMath.push(i);
     }
