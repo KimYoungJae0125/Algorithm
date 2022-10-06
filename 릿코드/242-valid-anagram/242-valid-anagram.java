@@ -3,9 +3,8 @@ class Solution {
         if(s.length() != t.length()) return false;
         StringBuilder sb1 = new StringBuilder().append(s);
         String[] sp = t.split("");
-        for(int i=0, len=sb1.length(); i<len; i++) {
-            int index = sb1.indexOf(sp[i]);
-            if(index != -1) sb1.deleteCharAt(index);
+        for(String st : sp) {
+            if(sb1.indexOf(st) != -1) sb1.deleteCharAt(sb1.indexOf(st));
         }
         return sb1.length() == 0;
     }
