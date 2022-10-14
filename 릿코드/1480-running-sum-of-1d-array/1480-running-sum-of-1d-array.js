@@ -2,8 +2,5 @@
  * @param {number[]} nums
  * @return {number[]}
  */
-const runningSum = (nums) => nums.map((v, index) => {
-    let sum = 0;
-    for(let i=0; i<=index; i++) sum += nums[i];
-    return sum;
-})
+const runningSum = (nums) => nums.map((v, index) => 
+    nums.filter((v, i) => i<=index).reduce((x, y) => x+y, 0))
