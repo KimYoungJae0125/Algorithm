@@ -1,7 +1,10 @@
 class Solution {
     public int findComplement(int num) {
-        int len = Integer.toBinaryString(num).length();
-        String s = Integer.toBinaryString(~num);
-        return Integer.parseInt(s.substring(s.length()-len), 2);
+        int mask = -1;
+        while ((num & mask) != 0) {
+            mask <<= 1;
+        }
+
+        return ~(num ^ mask); //~num & ~mask
     }
 }
