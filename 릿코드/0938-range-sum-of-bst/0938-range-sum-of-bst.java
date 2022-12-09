@@ -15,21 +15,17 @@
  */
 class Solution {
     public int rangeSumBST(TreeNode root, int low, int high) {
-        List<Integer> list = new ArrayList<>();
-        BST(root, list, low, high);
-        int result = 0;
-        for(int val : list) {
-            result += val;
-        }
-        return result;
+        int[] result = new int[1];
+        BST(root, result, low, high);
+        return result[0];
     }
-    private void BST(TreeNode node, List<Integer> list, int low, int high) {
-        if(low <= node.val && node.val <= high) list.add(node.val);
+    private void BST(TreeNode node, int[] result, int low, int high) {
+        if(low <= node.val && node.val <= high) result[0] += node.val;
         if(node.left != null) {
-            BST(node.left, list, low, high);
+            BST(node.left, result, low, high);
         }
         if(node.right != null) {
-            BST(node.right, list, low, high);
+            BST(node.right, result, low, high);
         }
     }
 }
