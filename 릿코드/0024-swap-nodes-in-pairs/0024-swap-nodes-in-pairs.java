@@ -10,8 +10,8 @@
  */
 class Solution {
     public ListNode swapPairs(ListNode head) {
-        ListNode newNode = new ListNode();
-        ListNode curNode = newNode;
+        var newNode = new ListNode();
+        var curNode = newNode;
         int count = 0;
         while(head != null) {
             if(count % 2 == 0 && head.next != null) {
