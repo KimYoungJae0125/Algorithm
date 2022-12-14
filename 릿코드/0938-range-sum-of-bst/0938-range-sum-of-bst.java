@@ -21,11 +21,7 @@ class Solution {
     }
     private void BST(TreeNode node, int[] result, int low, int high) {
         if(low <= node.val && node.val <= high) result[0] += node.val;
-        if(node.left != null) {
-            BST(node.left, result, low, high);
-        }
-        if(node.right != null) {
-            BST(node.right, result, low, high);
-        }
+        if(node.left != null) BST(node.left, result, low, high);
+        if(node.right != null) BST(node.right, result, low, high);
     }
 }
