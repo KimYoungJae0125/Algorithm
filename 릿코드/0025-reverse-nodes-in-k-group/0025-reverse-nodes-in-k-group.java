@@ -25,6 +25,7 @@ class Solution {
         ListNode result = new ListNode();
         ListNode createResult = result;
         for(var i : list1.stream()
+                .parallel()
                 .map(list -> {
                         if(list.size() == k) Collections.reverse(list);
                         return list;
