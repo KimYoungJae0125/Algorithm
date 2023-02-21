@@ -1,14 +1,19 @@
 class Solution {
     public int singleNonDuplicate(int[] nums) {
-        var set = new HashSet<Integer>();
-        for(var num : nums) {
-            boolean flag = false;
-            if(!set.contains(num)) {
-                set.add(num);
-                flag = true;
+        Map<Integer, Boolean> map = new HashMap<>();
+        for(int num : nums) {
+            Boolean single = map.get(num);
+            if(single == null) {
+                map.put(num, true);
+            } else {
+                map.put(num, false);
             }
-            if(!flag) set.remove(num);
         }
-        return set.iterator().next();
+        Iterator<Integer> iter = map.keySet().iterator();
+        while(iter.hasNext()) {
+            int result = 0;
+            if(map.get((result = iter.next()))) return result;
+        }
+        return 0;
     }
 }
