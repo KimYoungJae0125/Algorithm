@@ -1,19 +1,13 @@
 class Solution {
     public int singleNonDuplicate(int[] nums) {
-        Map<Integer, Boolean> map = new HashMap<>();
-        for(int num : nums) {
-            Boolean single = map.get(num);
-            if(single == null) {
-                map.put(num, true);
-            } else {
-                map.put(num, false);
+        int index = 0, length = nums.length - 1;
+        for(; index < length; index++) {
+            if(nums[index] == nums[index + 1]) {
+                index++;
+                continue;
             }
+            break;
         }
-        Iterator<Integer> iter = map.keySet().iterator();
-        while(iter.hasNext()) {
-            int result = 0;
-            if(map.get((result = iter.next()))) return result;
-        }
-        return 0;
+        return nums[index];
     }
 }
