@@ -1,26 +1,31 @@
 class Solution {
     public String reverseVowels(String s) {
-        StringBuilder sb = new StringBuilder().append(s);
-        StringBuilder reverseSb = new StringBuilder();
-        var index = new ArrayList<Integer>();
-        int count = 0;
-        for(char c : s.toLowerCase().toCharArray()) {
-            switch (c) {
-                case 'a' :
-                case 'e' :
-                case 'i' :
-                case 'o' :
-                case 'u' :
-                    index.add(count);
-                    reverseSb.append(sb.charAt(count));
+        Queue<int[]> queue = new PriorityQueue<>((a, b) -> b[0] - a[0] );
+        Queue<String> queue2 = new LinkedList<>();
+        String st[] = s.split("");
+        for(int i=0, len=s.length(); i<len; i++) {
+            switch (st[i]) {
+                case "A" :
+                case "a" :
+                case "E" :
+                case "e" :
+                case "I" :
+                case "i" :
+                case "O" :
+                case "o" :
+                case "U" :
+                case "u" :
+                    queue.offer(new int[]{i});
+                    queue2.offer(st[i]);
                     break;
             }
-            count++;
         }
-        int sbIndex = reverseSb.length()-1;
-        for(int i : index) {
-            sb.replace(i, i+1, String.valueOf(reverseSb.charAt(sbIndex--)));
+        StringBuilder sb = new StringBuilder().append(s);
+        while(!queue.isEmpty()) {
+            int index = queue.poll()[0];
+            sb.replace(index, index+1, queue2.poll());
         }
+
         return sb.toString();
     }
 }
