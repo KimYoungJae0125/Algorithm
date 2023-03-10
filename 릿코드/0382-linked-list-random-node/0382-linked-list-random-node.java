@@ -14,12 +14,12 @@ class Solution {
     int size;
 
     public Solution(ListNode head) {
-        List<Integer> list = new ArrayList<>();
+        List<int[]> list = new ArrayList<>();
         while(head != null) {
-            list.add(head.val);
+            list.add(new int[]{head.val});
             head = head.next;
         }
-        headVals = list.stream().mapToInt(i -> i).toArray();
+        headVals = list.stream().mapToInt(i -> i[0]).toArray();
         size = list.size();
     }
 
