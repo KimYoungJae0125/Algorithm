@@ -19,8 +19,11 @@ class Solution {
             list.add(new int[]{head.val});
             head = head.next;
         }
-        headVals = list.parallelStream().mapToInt(i -> i[0]).toArray();
         size = list.size();
+        headVals = new int[size];
+        for(int i = 0; i < size; i++) {
+            headVals[i] = list.get(i)[0];
+        }
     }
 
     public int getRandom() {
