@@ -10,27 +10,25 @@
  */
 class Solution {
     public int[] nextLargerNodes(ListNode head) {
-         int[] headVals = new int[10000];
-         boolean[] check = new boolean[10000];
-         Queue<int[][]> queue = new PriorityQueue<>(((a,b) -> b[0][0] - a[0][0]));
+         Stack<Integer> indexStacks = new Stack<>();
+         List<Integer> headVals = new ArrayList<>();
          int index = 0;
          while(head != null) {
-             headVals[index++] = head.val;
+             headVals.add(head.val);
+             while(!indexStacks.isEmpty() && headVals.get(indexStacks.peek()) < head.val) {
+                 headVals.set(indexStacks.pop(), head.val);
+             }
+             indexStacks.add(index++);
              if(head.next == null) break;
              head = head.next;
-             queue.offer(new int[][]{{head.val, index}});
-             for(int i = 0; i < index; i++) {
-                 if(!check[i] && headVals[i] < queue.peek()[0][0]) {
-                     while(queue.peek()[0][1] < i) queue.poll();
-                     if(queue.peek()[0][0] <= headVals[i]) break;
-                     check[i] = true;
-                     headVals[i] = queue.peek()[0][0];
-                 }
-             }
          }
-         int[] result = new int[index];
-         for(int i = 0; i < index; i++) {
-             result[i] = check[i] ? headVals[i] : 0;
+
+         while(!indexStacks.isEmpty()) headVals.set(indexStacks.pop(), 0);
+
+         int length = headVals.size();
+         int[] result = new int[length];
+         for(int i = 0; i < length; i++) {
+             result[i] = headVals.get(i);
          }
 
          return result;
