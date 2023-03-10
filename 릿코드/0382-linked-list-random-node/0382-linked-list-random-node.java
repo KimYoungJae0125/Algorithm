@@ -11,19 +11,16 @@
 class Solution {
 
     int[] headVals;
-    int size;
+    int size = 0;
 
     public Solution(ListNode head) {
-        List<int[]> list = new ArrayList<>();
+        int[] temp = new int[10000];
         while(head != null) {
-            list.add(new int[]{head.val});
+            temp[size++] = head.val;
             head = head.next;
         }
-        size = list.size();
         headVals = new int[size];
-        for(int i = 0; i < size; i++) {
-            headVals[i] = list.get(i)[0];
-        }
+        for(int i = 0; i < size; i++) headVals[i] = temp[i];
     }
 
     public int getRandom() {
