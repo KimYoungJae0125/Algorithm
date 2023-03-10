@@ -19,7 +19,7 @@ class Solution {
             list.add(new int[]{head.val});
             head = head.next;
         }
-        headVals = list.stream().mapToInt(i -> i[0]).toArray();
+        headVals = list.parallelStream().mapToInt(i -> i[0]).toArray();
         size = list.size();
     }
 
