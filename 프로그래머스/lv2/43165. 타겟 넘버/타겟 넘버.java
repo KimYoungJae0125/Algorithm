@@ -1,20 +1,21 @@
 class Solution {
+    int length, answer = 0;
     public int solution(int[] numbers, int target) {
-        int[] answer = {0};
+        length = numbers.length;
 
-        getTargetNumber(numbers, numbers.length, numbers[0], 0, target, answer);
-        getTargetNumber(numbers, numbers.length, -numbers[0], 0, target, answer);
+        plusOrSub(numbers, numbers[0], 0, target);
+        plusOrSub(numbers, -numbers[0], 0, target);
 
-        return answer[0];
+        return answer;
     }
 
-    public void getTargetNumber(int[] numbers, int length, int number, int index, int target, int[] answer) {
+    public void plusOrSub(int[] numbers, int number, int index, int target) {
         if(length-1 == index) {
-            if(target == number) answer[0]++;
+            if(target == number) answer++;
             return;
         }
         index++;
-        getTargetNumber(numbers, length, number+numbers[index], index, target, answer);
-        getTargetNumber(numbers, length, number-numbers[index], index, target, answer);
+        plusOrSub(numbers, number+numbers[index], index, target);
+        plusOrSub(numbers, number-numbers[index], index, target);
     }
 }
