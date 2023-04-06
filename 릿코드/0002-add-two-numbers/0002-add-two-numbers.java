@@ -36,7 +36,6 @@ class Solution {
        }
        if(digits >= 1) {
            cur.next = new ListNode(digits);
-           cur = cur.next;
        }
 
        return result.next;
