@@ -1,27 +1,29 @@
 class Solution {
     public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
-        List<List<Integer>> answer = new ArrayList<>();
+        List<List<Integer>> resultPath = new ArrayList<>();
+        int lastNode = graph.length - 1;
+
         Queue<List<Integer>> queue = new LinkedList<>();
-        queue.add(Arrays.asList(0));
-        int dest = graph.length -1;
+        List<Integer> startPath = new ArrayList<>();
+        startPath.add(0);
+        queue.offer(startPath);
 
         while (!queue.isEmpty()) {
-            final var path = queue.poll();
-            final var now = path.get(path.size() - 1); // 마지막 경로 (현재 위치한 노드)
+            List<Integer> path = queue.poll();
+            int currentNode = path.get(path.size() - 1);
 
-            if (now == dest) {
-                answer.add(new ArrayList<>(path));
-            } else {
+            if (currentNode == lastNode) {
+                resultPath.add(path);
+                continue;
+            }
 
-                for (int node : graph[now]) {
-                    List<Integer> newPath = new ArrayList<>(path);
-                    newPath.add(node);
-
-                    queue.add(newPath);
-                }
+            for (int neighbor : graph[currentNode]) {
+                List<Integer> newPath = new ArrayList<>(path);
+                newPath.add(neighbor);
+                queue.offer(newPath);
             }
         }
 
-        return answer;
+        return resultPath;
     }
 }
