@@ -8,7 +8,7 @@ class Solution {
             while(left < right) {
                 int sum = nums[i] + nums[left] + nums[right];
                 if(sum == 0) {
-                    List<Integer> list = new LinkedList<>();
+                    List<Integer> list = new ArrayList<>(3);
                     list.add(nums[i]);
                     list.add(nums[left++]);
                     list.add(nums[right--]);
