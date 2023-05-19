@@ -7,13 +7,7 @@ class Solution {
             int right = length + 1;
             while(left < right) {
                 int sum = nums[i] + nums[left] + nums[right];
-                if(sum == 0) {
-                    List<Integer> list = new ArrayList<>(3);
-                    list.add(nums[i]);
-                    list.add(nums[left++]);
-                    list.add(nums[right--]);
-                    result.add(list);
-                }
+                if(sum == 0) result.add(List.of(nums[i], nums[left++], nums[right--]));
                 else if(sum < 0) left++;
                 else right--;
             }
